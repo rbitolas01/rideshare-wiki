@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>rideshare-wiki · Architecture</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+  <header class="nav">
+    <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+    <nav class="links">
+      <a href="index.html">Overview</a>
+      <a class="active" href="architecture.html">Architecture</a>
+      <a href="economics.html">Economics</a>
+      <a href="driver-fairness.html">Driver Fairness</a>
+      <a href="scale-metrics.html">Scale Metrics</a>
+      <a href="costs-vs-revenue.html">Costs vs Revenue</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+  </header>
+  <main class="page">
+    <section class="hero">
+      <h1>Architecture</h1>
+      <p>Cloud-native topology: Edge API + service portal facade + microservices + eventing + analytics pipeline.</p>
+
+    </section>
+
+    <section class="grid">
+      <div class="card twoThird">
+        <h2>Diagrams</h2>
+        <div class="figure" style="margin-top:12px">
+          <img src="assets/img/high-level-architecture.png" alt="Azure Architecture with VNETs" />
+          <div class="caption">High-level logical architecture (optional).</div>
+        </div>
+        <div class="figure" style="margin-top:12px">
+          <img src="assets/img/azure-architecture-vnets.png" alt="High Level Architecture" />
+          <div class="caption">Azure + VNETs diagram (primary).</div>
+        </div>
+      </div>
+
+      <div class="card oneThird">
+        <h2>Core components</h2>
+        <ul>
+          <li><strong>Public edge:</strong> Route API</li>
+          <li><strong>Service portal:</strong> facade + orchestration</li>
+          <li><strong>Microservices:</strong> buyer/seller/financial, etc.</li>
+          <li><strong>Eventing:</strong> RabbitMQ (demo) → Kafka (prod)</li>
+          <li><strong>Data:</strong> Redis + NoSQL operational store</li>
+          <li><strong>Analytics:</strong> lake/ML → warehouse</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">Built for operators. Designed for drivers. SaaS-first. • Last updated: 2026-01-31</footer>
+  </main>
+</body>
+
+</html>

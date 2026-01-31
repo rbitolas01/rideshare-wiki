@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>rideshare-wiki · Driver Fairness</title>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+  <nav class="links">
+    <a href="index.html">Overview</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="economics.html">Economics</a>
+    <a class="active" href="driver-fairness.html">Driver Fairness</a>
+    <a href="scale-metrics.html">Scale Metrics</a>
+    <a href="costs-vs-revenue.html">Costs vs Revenue</a>
+    <a href="roadmap.html">Roadmap</a>
+  </nav>
+</header>
+<main class="page">
+  <section class="hero">
+    <h1>Driver Fairness (70–80%)</h1>
+    <p>A driver-first platform is sustainable when governance and pricing guardrails are explicit.</p>
+    
+  </section>
+
+  <section class="grid">
+    <div class="card half">
+      <h2>Fairness goals</h2>
+      <ul>
+        <li>Drivers keep <strong>70–80%</strong> of gross fares.</li>
+        <li>Operator keeps transparent margin for operations.</li>
+        <li>SaaS fee is <strong>capped</strong> and decoupled from surge manipulation.</li>
+      </ul>
+      <div class="callout"><strong>Guardrail:</strong> platform fees are capped and never exceed a fixed percentage of fares.</div>
+    </div>
+
+    <div class="card half">
+      <h2>Example split</h2>
+      <table>
+        <thead><tr><th>Recipient</th><th class="right">% of fare</th></tr></thead>
+        <tbody>
+          <tr><td>Driver</td><td class="right">70–80%</td></tr>
+          <tr><td>Operator</td><td class="right">15–25%</td></tr>
+          <tr><td>SaaS Platform</td><td class="right">2–5%</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Operators can tune the split. The platform stays profitable due to scalable cloud economics and low take-rate.</p>
+    </div>
+
+    <div class="card">
+      <h2>Why this remains profitable</h2>
+      <ul>
+        <li>Fees are aligned to usage (rides, active drivers).</li>
+        <li>Support costs scale slower than ride volume.</li>
+        <li>Analytics/warehouse can be premium tiers at scale.</li>
+      </ul>
+      
+<svg class="chart" viewBox="0 0 820 220" role="img" aria-label="Typical fare split: drivers 75%, operator 22%, SaaS 3%">
+  <text x="10" y="22" font-size="16" font-weight="900" fill="#0f172a">Typical Fare Split (Example)</text>
+  <rect x="10" y="60" width="600" height="44" fill="#22c55e" rx="10"></rect>
+  <rect x="610" y="60" width="176" height="44" fill="#64748b" rx="10"></rect>
+  <rect x="786" y="60" width="24" height="44" fill="#2563eb" rx="10"></rect>
+
+  <text x="22" y="88" font-size="14" font-weight="800" fill="#ffffff">Drivers 75%</text>
+  <text x="620" y="88" font-size="14" font-weight="800" fill="#ffffff">Operator 22%</text>
+  <text x="770" y="140" font-size="13" font-weight="800" fill="#2563eb">SaaS 3%</text>
+
+  <rect x="10" y="140" width="14" height="14" fill="#22c55e" rx="3"></rect>
+  <text x="30" y="152" font-size="13" fill="#475569">Driver payout</text>
+  <rect x="160" y="140" width="14" height="14" fill="#64748b" rx="3"></rect>
+  <text x="180" y="152" font-size="13" fill="#475569">Operator margin</text>
+  <rect x="330" y="140" width="14" height="14" fill="#2563eb" rx="3"></rect>
+  <text x="350" y="152" font-size="13" fill="#475569">SaaS fee</text>
+
+  <text x="10" y="190" font-size="12" fill="#475569">Drivers retain 70–80%. SaaS fee remains capped and predictable.</text>
+</svg>
+
+    </div>
+  </section>
+
+  <footer class="footer">Built for operators. Designed for drivers. SaaS-first. • Last updated: 2026-01-31</footer>
+</main>
+</body>
+</html>

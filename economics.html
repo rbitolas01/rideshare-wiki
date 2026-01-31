@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>rideshare-wiki · Economics</title>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+  <nav class="links">
+    <a href="index.html">Overview</a>
+    <a href="architecture.html">Architecture</a>
+    <a class="active" href="economics.html">Economics</a>
+    <a href="driver-fairness.html">Driver Fairness</a>
+    <a href="scale-metrics.html">Scale Metrics</a>
+    <a href="costs-vs-revenue.html">Costs vs Revenue</a>
+    <a href="roadmap.html">Roadmap</a>
+  </nav>
+</header>
+<main class="page">
+  <section class="hero">
+    <h1>Economics: Hybrid Model (Option C)</h1>
+    <p>A stable base + scalable upside: per-driver subscription plus per-ride platform fee. Transparent, predictable, and fair.</p>
+    
+  </section>
+
+  <section class="grid">
+    <div class="card twoThird">
+      <h2>Hybrid pricing</h2>
+      <ul>
+        <li><strong>$20 / active driver / month</strong> – platform access + core SaaS operations.</li>
+        <li><strong>$0.25 / completed ride</strong> – usage-based fee aligned to load and value delivered.</li>
+        <li><strong>Governance:</strong> cap the platform take-rate (e.g., ≤ 5%) to protect drivers.</li>
+      </ul>
+      <div class="callout"><strong>Why it works:</strong> predictable baseline + growth capture without squeezing drivers.</div>
+      
+<svg class="chart" viewBox="0 0 820 220" role="img" aria-label="Typical fare split: drivers 75%, operator 22%, SaaS 3%">
+  <text x="10" y="22" font-size="16" font-weight="900" fill="#0f172a">Typical Fare Split (Example)</text>
+  <rect x="10" y="60" width="600" height="44" fill="#22c55e" rx="10"></rect>
+  <rect x="610" y="60" width="176" height="44" fill="#64748b" rx="10"></rect>
+  <rect x="786" y="60" width="24" height="44" fill="#2563eb" rx="10"></rect>
+
+  <text x="22" y="88" font-size="14" font-weight="800" fill="#ffffff">Drivers 75%</text>
+  <text x="620" y="88" font-size="14" font-weight="800" fill="#ffffff">Operator 22%</text>
+  <text x="770" y="140" font-size="13" font-weight="800" fill="#2563eb">SaaS 3%</text>
+
+  <rect x="10" y="140" width="14" height="14" fill="#22c55e" rx="3"></rect>
+  <text x="30" y="152" font-size="13" fill="#475569">Driver payout</text>
+  <rect x="160" y="140" width="14" height="14" fill="#64748b" rx="3"></rect>
+  <text x="180" y="152" font-size="13" fill="#475569">Operator margin</text>
+  <rect x="330" y="140" width="14" height="14" fill="#2563eb" rx="3"></rect>
+  <text x="350" y="152" font-size="13" fill="#475569">SaaS fee</text>
+
+  <text x="10" y="190" font-size="12" fill="#475569">Drivers retain 70–80%. SaaS fee remains capped and predictable.</text>
+</svg>
+
+      <p class="small">You can tune both levers (driver fee and ride fee) by market and by operator tier.</p>
+    </div>
+
+    <div class="card oneThird">
+      <h2>What the fee funds</h2>
+      <ul>
+        <li>Platform uptime and upgrades</li>
+        <li>Edge API + service portal</li>
+        <li>Event processing and analytics readiness</li>
+        <li>Support and incident response</li>
+      </ul>
+      <p class="small">Operators pay the platform; drivers keep the majority of fare revenue.</p>
+    </div>
+  </section>
+
+  <footer class="footer">Built for operators. Designed for drivers. SaaS-first. • Last updated: 2026-01-31</footer>
+</main>
+</body>
+</html>

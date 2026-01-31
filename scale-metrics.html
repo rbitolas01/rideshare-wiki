@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>rideshare-wiki · Scale Metrics</title>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+  <nav class="links">
+    <a href="index.html">Overview</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="economics.html">Economics</a>
+    <a href="driver-fairness.html">Driver Fairness</a>
+    <a class="active" href="scale-metrics.html">Scale Metrics</a>
+    <a href="costs-vs-revenue.html">Costs vs Revenue</a>
+    <a href="roadmap.html">Roadmap</a>
+  </nav>
+</header>
+<main class="page">
+  <section class="hero">
+    <h1>Scale Metrics (DFW)</h1>
+    <p>Traffic tiers translated into drivers, rides, and revenue ranges for the Dallas–Fort Worth market.</p>
+    
+  </section>
+
+  <section class="grid">
+    <div class="card twoThird">
+      <h2>Low / Medium / High (directional)</h2>
+      <table>
+        <thead><tr><th>Tier</th><th class="right">Active drivers</th><th class="right">Rides/day</th><th class="right">Rides/month</th></tr></thead>
+        <tbody>
+          <tr><td>Low</td><td class="right">300–600</td><td class="right">4k–8k</td><td class="right">120k–240k</td></tr>
+          <tr><td>Medium</td><td class="right">3k–6k</td><td class="right">40k–80k</td><td class="right">1.2M–2.4M</td></tr>
+          <tr><td>High</td><td class="right">15k–30k</td><td class="right">200k–400k</td><td class="right">6M–12M</td></tr>
+        </tbody>
+      </table>
+      
+<svg class="chart" viewBox="0 0 820 280" role="img" aria-label="Revenue scales with usage from low to medium to high">
+  <text x="10" y="22" font-size="16" font-weight="900" fill="#0f172a">Gross Marketplace Revenue (DFW)</text>
+  <line x1="60" y1="240" x2="790" y2="240" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="60" y1="40" x2="60" y2="240" stroke="#94a3b8" stroke-width="2"/>
+
+  <text x="85" y="262" font-size="12" fill="#475569">Low</text>
+  <text x="375" y="262" font-size="12" fill="#475569">Medium</text>
+  <text x="690" y="262" font-size="12" fill="#475569">High</text>
+
+  <circle cx="100" cy="200" r="6" fill="#22c55e"/>
+  <circle cx="410" cy="140" r="6" fill="#22c55e"/>
+  <circle cx="720" cy="70" r="6" fill="#22c55e"/>
+  <polyline points="100,200 410,140 720,70" fill="none" stroke="#22c55e" stroke-width="3"/>
+
+  <text x="112" y="192" font-size="12" fill="#475569">$50k–$150k/mo</text>
+  <text x="422" y="132" font-size="12" fill="#475569">$500k–$1M/mo</text>
+  <text x="732" y="62" font-size="12" fill="#475569">$2M+/mo</text>
+</svg>
+      
+<svg class="chart" viewBox="0 0 820 290" role="img" aria-label="SaaS Platform Revenue Share: driver 75%, operator 22%, SaaS 3% example; SaaS take-rate capped">
+  <text x="10" y="22" font-size="16" font-weight="900" fill="#0f172a">SaaS Platform Revenue Share (Illustrative)</text>
+  <text x="10" y="44" font-size="12" fill="#475569">Driver-first split with a capped SaaS take-rate. Operators configure exact percentages.</text>
+
+  <!-- Stacked bars per tier (same percentages; revenue changes with volume) -->
+  <!-- bar dimensions -->
+  <!-- Low -->
+  <text x="70" y="86" font-size="12" fill="#475569">Low</text>
+  <rect x="120" y="70" width="420" height="36" fill="#22c55e" rx="10"></rect>
+  <rect x="540" y="70" width="123" height="36" fill="#64748b" rx="10"></rect>
+  <rect x="663" y="70" width="17" height="36" fill="#2563eb" rx="10"></rect>
+  <text x="130" y="93" font-size="12" font-weight="800" fill="#ffffff">Drivers 75%</text>
+
+  <!-- Medium -->
+  <text x="55" y="146" font-size="12" fill="#475569">Medium</text>
+  <rect x="120" y="130" width="420" height="36" fill="#22c55e" rx="10"></rect>
+  <rect x="540" y="130" width="123" height="36" fill="#64748b" rx="10"></rect>
+  <rect x="663" y="130" width="17" height="36" fill="#2563eb" rx="10"></rect>
+
+  <!-- High -->
+  <text x="70" y="206" font-size="12" fill="#475569">High</text>
+  <rect x="120" y="190" width="420" height="36" fill="#22c55e" rx="10"></rect>
+  <rect x="540" y="190" width="123" height="36" fill="#64748b" rx="10"></rect>
+  <rect x="663" y="190" width="17" height="36" fill="#2563eb" rx="10"></rect>
+
+  <!-- Legend -->
+  <rect x="120" y="240" width="14" height="14" fill="#22c55e" rx="3"></rect>
+  <text x="140" y="252" font-size="12" fill="#475569">Drivers (target 70–80%)</text>
+  <rect x="330" y="240" width="14" height="14" fill="#64748b" rx="3"></rect>
+  <text x="350" y="252" font-size="12" fill="#475569">Operator margin</text>
+  <rect x="500" y="240" width="14" height="14" fill="#2563eb" rx="3"></rect>
+  <text x="520" y="252" font-size="12" fill="#475569">SaaS fee (capped)</text>
+
+  <text x="10" y="280" font-size="12" fill="#475569">SaaS revenue is a percentage of gross marketplace revenue, plus optional per-driver subscription (Hybrid Option C).</text>
+</svg>
+
+
+
+      <p class="small">These ranges are planning tiers. Operators control local pricing, incentives, and market execution.</p>
+    </div>
+
+    <div class="card oneThird">
+      <h2>Revenue linkage (Hybrid)</h2>
+      <ul>
+        <li>Driver subscription creates stable baseline.</li>
+        <li>Per-ride fee scales with usage.</li>
+        <li>Low take-rate preserves driver earnings while funding upgrades.</li>
+      </ul>
+      <div class="callout"><strong>Rule of thumb:</strong> one trip generates ~15–25 API calls depending on features.</div>
+    </div>
+  </section>
+
+  <footer class="footer">Built for operators. Designed for drivers. SaaS-first. • Last updated: 2026-01-31</footer>
+</main>
+</body>
+</html>

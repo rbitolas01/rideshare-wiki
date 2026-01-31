@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>rideshare-wiki · Roadmap</title>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+  <nav class="links">
+    <a href="index.html">Overview</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="economics.html">Economics</a>
+    <a href="driver-fairness.html">Driver Fairness</a>
+    <a href="scale-metrics.html">Scale Metrics</a>
+    <a href="costs-vs-revenue.html">Costs vs Revenue</a>
+    <a class="active" href="roadmap.html">Roadmap</a>
+  </nav>
+</header>
+<main class="page">
+  <section class="hero">
+    <h1>Roadmap (Phases 1–4)</h1>
+    <p>A phased technology plan that grows from demo → production → analytics/ML → modern data warehouse.</p>
+    
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Phases</h2>
+      <table>
+        <thead><tr><th>Phase</th><th>Focus</th><th class="right">Outcome</th></tr></thead>
+        <tbody>
+          <tr><td>Phase 1</td><td>Demo</td><td class="right">Low-cost demo environment, validate UX and flows</td></tr>
+          <tr><td>Phase 2</td><td>Production (No SQL) + Admin</td><td class="right">Operator-ready base, admin capabilities, edge security baseline</td></tr>
+          <tr><td>Phase 3</td><td>Analytics + ML + Event-driven</td><td class="right">Event pipelines, ML readiness, scalable analytics</td></tr>
+          <tr><td>Phase 4</td><td>Modern Data Warehouse</td><td class="right">Warehouse + BI concurrency + governance baseline</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>Design intent:</strong> each phase adds capability without rewriting the core platform.</div>
+    </div>
+
+    <div class="card half">
+      <h2>What stays constant</h2>
+      <ul>
+        <li>Driver-first governance (70–80%)</li>
+        <li>SaaS-first operating model</li>
+        <li>Hybrid pricing aligned to usage</li>
+        <li>Event-driven backbone</li>
+      </ul>
+    </div>
+
+    <div class="card half">
+      <h2>What evolves</h2>
+      <ul>
+        <li>Messaging: RabbitMQ → Kafka</li>
+        <li>Analytics: light → ML pipelines → warehouse</li>
+        <li>Security: baseline edge → tuned rules later</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">Built for operators. Designed for drivers. SaaS-first. • Last updated: 2026-01-31</footer>
+</main>
+</body>
+</html>

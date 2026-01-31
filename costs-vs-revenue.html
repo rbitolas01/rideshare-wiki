@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>rideshare-wiki · Costs vs Revenue</title>
+  <link rel="stylesheet" href="assets/css/main.css"/>
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+  <nav class="links">
+    <a href="index.html">Overview</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="economics.html">Economics</a>
+    <a href="driver-fairness.html">Driver Fairness</a>
+    <a href="scale-metrics.html">Scale Metrics</a>
+    <a class="active" href="costs-vs-revenue.html">Costs vs Revenue</a>
+    <a href="roadmap.html">Roadmap</a>
+  </nav>
+</header>
+<main class="page">
+  <section class="hero">
+    <h1>Costs vs Revenue</h1>
+    <p>SaaS remains profitable when platform revenue scales faster than support and platform operations.</p>
+    
+  </section>
+
+  <section class="grid">
+    <div class="card twoThird">
+      <h2>Sustainability</h2>
+      <ul>
+        <li>Revenue scales with drivers and rides.</li>
+        <li>Support + platform ops scale slower than ride volume.</li>
+        <li>Margins improve with adoption and multi-tenant reuse.</li>
+      </ul>
+      
+
+
+<svg class="chart" viewBox="0 0 900 360" role="img">
+  <text x="10" y="22" font-size="16" font-weight="900" fill="#0f172a">
+    Costs vs Revenue (Monthly – Low / Medium / High)
+  </text>
+  <text x="10" y="44" font-size="12" fill="#475569">
+    Comparing Gross Marketplace Revenue (GMR), SaaS Revenue, and Support + Ops Costs
+  </text>
+
+  <line x1="60" y1="300" x2="860" y2="300" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="60" y1="80" x2="60" y2="300" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- LOW (increased internal gaps) -->
+  <text x="207" y="330" font-size="12" fill="#475569">Low</text>
+  <rect x="120" y="180" width="50" height="120" fill="#22c55e" rx="6"/>
+  <rect x="182" y="260" width="50" height="40" fill="#2563eb" rx="6"/>
+  <rect x="244" y="250" width="50" height="50" fill="#64748b" rx="6"/>
+  <text x="115" y="170" font-size="11" fill="#22c55e">$50–150k GMR</text>
+  <text x="177" y="255" font-size="11" fill="#2563eb">$3.7–5k SaaS</text>
+  <text x="239" y="245" font-size="11" fill="#64748b">$13–19k Cost</text>
+
+  <!-- MEDIUM (shifted slightly and increased gaps) -->
+  <text x="465" y="330" font-size="12" fill="#475569">Medium</text>
+  <rect x="378" y="130" width="50" height="170" fill="#22c55e" rx="6"/>
+  <rect x="440" y="200" width="50" height="100" fill="#2563eb" rx="6"/>
+  <rect x="502" y="250" width="50" height="50" fill="#64748b" rx="6"/>
+  <text x="368" y="120" font-size="11" fill="#22c55e">$300–800k GMR</text>
+  <text x="435" y="195" font-size="11" fill="#2563eb">$16–23k SaaS</text>
+  <text x="495" y="245" font-size="11" fill="#64748b">$12–18k Cost</text>
+
+  <!-- HIGH (shifted, increased gaps) -->
+  <text x="735" y="330" font-size="12" fill="#475569">High</text>
+  <rect x="648" y="90" width="50" height="210" fill="#22c55e" rx="6"/>
+  <rect x="710" y="160" width="50" height="140" fill="#2563eb" rx="6"/>
+  <rect x="772" y="240" width="50" height="60" fill="#64748b" rx="6"/>
+  <text x="638" y="80" font-size="11" fill="#22c55e">$2M+ GMR</text>
+  <text x="705" y="155" font-size="11" fill="#2563eb">$85k+ SaaS</text>
+  <text x="765" y="235" font-size="11" fill="#64748b">$20–30k Cost</text>
+
+  <!-- Legend (increased horizontal spacing between items) -->
+  <rect x="80" y="64" width="14" height="14" fill="#22c55e"/>
+  <text x="104" y="76" font-size="12" fill="#475569">Gross Marketplace Revenue</text>
+  <rect x="300" y="64" width="14" height="14" fill="#2563eb"/>
+  <text x="324" y="76" font-size="12" fill="#475569">SaaS Revenue</text>
+  <rect x="440" y="64" width="14" height="14" fill="#64748b"/>
+  <text x="464" y="76" font-size="12" fill="#475569">Support + Platform Ops</text>
+</svg>
+
+
+
+      <p class="small">This chart is illustrative. Use your workbook to plug in exact support and staffing assumptions.</p>
+    </div>
+
+    <div class="card oneThird">
+      <h2>Operating boundaries</h2>
+      <ul>
+        <li><strong>Platform team:</strong> uptime, upgrades, data readiness.</li>
+        <li><strong>Stakeholders:</strong> market ops, driver/rider support, pricing decisions.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="footer">Built for operators. Designed for drivers. SaaS-first. • Last updated: 2026-01-31</footer>
+</main>
+</body>
+</html>
