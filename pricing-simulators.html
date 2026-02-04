@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing Simulators · rideshare-wiki</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body>
+    <header class="nav">
+        <div class="brand"><span class="logo"></span><span>rideshare-wiki</span></div>
+        <nav class="links">
+            <a href="index.html">Overview</a>
+            <a href="architecture.html">Architecture</a>
+            <a href="economics.html">Economics</a>
+            <a href="driver-fairness.html">Driver Fairness</a>
+            <a href="scale-metrics.html">Scale Metrics</a>
+            <a href="costs-vs-revenue.html">Costs vs Revenue</a>
+            <a class="active" href="pricing-simulators.html">Pricing Simulators</a>
+            <a href="roadmap.html">Roadmap</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="hero">
+            <h1>Pricing & Revenue Simulators</h1>
+            <p>Interactively model SaaS revenue using fixed pricing or percentage-based alternatives.</p>
+        </section>
+
+        <section class="grid">
+
+            <!-- MODEL A -->
+            <div class="card half">
+                <h2>Model A — Fixed SaaS Pricing</h2>
+                <p class="small">Subscription + per-ride fee</p>
+
+                <div class="controls">
+                    <div class="control-row">
+                        <div class="label">Active drivers <span id="aDriversVal"></span></div>
+                        <input type="range" min="50" max="3000" value="150" id="aDrivers" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">$ / driver / month <span id="aSubVal"></span></div>
+                        <input type="range" min="5" max="50" value="20" id="aSub" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">$ / completed ride <span id="aRideFeeVal"></span></div>
+                        <input type="range" min="0" max="1" step="0.05" value="0.25" id="aRideFee" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">Rides / driver / month <span id="aRidesVal"></span></div>
+                        <input type="range" min="20" max="200" value="60" id="aRides" />
+                    </div>
+                </div>
+
+                <hr class="hr-soft" />
+
+                <div class="results">
+                    <div class="big">Monthly SaaS revenue: $<span id="aRevenue"></span></div>
+                    <div class="big">Monthly Net SaaS profit: $<span id="aProfit"></span></div>
+                    <div class="muted">Revenue minus Support + Ops (and optional Infra).</div>
+                </div>
+            </div>
+
+            <!-- MODEL B -->
+            <div class="card half">
+                <h2>Model B — % of Fare Alternative</h2>
+                <p class="small">Subscription + % of Gross Marketplace Revenue (GMR)</p>
+
+                <div class="controls">
+                    <div class="control-row">
+                        <div class="label">Active drivers <span id="bDriversVal"></span></div>
+                        <input type="range" min="50" max="3000" value="150" id="bDrivers" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">$ / driver / month <span id="bSubVal"></span></div>
+                        <input type="range" min="0" max="50" value="10" id="bSub" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">Platform % of fare <span id="bPctVal"></span></div>
+                        <input type="range" min="1" max="15" value="5" id="bPct" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">Average fare ($) <span id="bFareVal"></span></div>
+                        <input type="range" min="8" max="30" value="15" id="bFare" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">Rides / driver / month <span id="bRidesVal"></span></div>
+                        <input type="range" min="20" max="200" value="60" id="bRides" />
+                    </div>
+                </div>
+
+                <hr class="hr-soft" />
+
+                <div class="results">
+                    <div class="big">Monthly SaaS revenue: $<span id="bRevenue"></span></div>
+                    <div class="big">Monthly Net SaaS profit: $<span id="bProfit"></span></div>
+                    <div class="muted">Revenue minus Support + Ops (and optional Infra).</div>
+                </div>
+            </div>
+
+            <!-- SHARED COSTS -->
+            <div class="card">
+                <h2>Support + Platform Ops Cost (shared)</h2>
+                <p class="small">These sliders affect Net SaaS profit for both models.</p>
+
+                <div class="controls">
+                    <div class="control-row">
+                        <div class="label">Support + Platform Ops ($/mo) <span id="opsVal"></span></div>
+                        <input type="range" min="2000" max="50000" step="500" value="12000" id="ops" />
+                    </div>
+
+                    <div class="control-row">
+                        <div class="label">Infrastructure ($/mo) <span id="infraVal"></span></div>
+                        <input type="range" min="0" max="10000" step="50" value="810" id="infra" />
+                    </div>
+                </div>
+
+                <hr class="hr-soft" />
+
+                <div class="results">
+                    <div class="big">
+                        Total monthly cost: $<span id="totalCost"></span> <span class="pill">Ops + Infra</span>
+                    </div>
+                    <div class="muted">Tip: set Infra to 0 if you want to isolate “pure SaaS operations.”</div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="footer">Sliders are illustrative. Adjust to match real operator assumptions.</footer>
+    </main>
+
+    <script>
+        function money(n) { return Math.round(n).toLocaleString(); }
+
+        // Defaults
+        const defaults = {
+            // Model A
+            aDrivers: 150,
+            aSub: 20,
+            aRideFee: 0.25,
+            aRides: 60,
+
+            // Model B
+            bDrivers: 150,
+            bSub: 10,
+            bPct: 5,
+            bFare: 15,
+            bRides: 60,
+
+            // Costs
+            ops: 12000,
+            infra: 810
+        };
+
+        function setProfitClass(el, value) {
+            el.classList.remove("profit-pos", "profit-neg");
+            if (value >= 0) el.classList.add("profit-pos");
+            else el.classList.add("profit-neg");
+        }
+
+        function calc() {
+            const ops = +document.getElementById("ops").value;
+            const infra = +document.getElementById("infra").value;
+            const totalCost = ops + infra;
+
+            // Model A
+            const ad = +aDrivers.value;
+            const as = +aSub.value;
+            const ar = +aRideFee.value;
+            const arides = +aRides.value;
+
+            const aRevenueVal = (ad * as) + (ad * arides * ar);
+            const aProfitVal = aRevenueVal - totalCost;
+
+            aDriversVal.textContent = ad;
+            aSubVal.textContent = `$${as}`;
+            aRideFeeVal.textContent = `$${ar.toFixed(2)}`;
+            aRidesVal.textContent = arides;
+
+            aRevenue.textContent = money(aRevenueVal);
+            aProfit.textContent = money(aProfitVal);
+            setProfitClass(aProfit, aProfitVal);
+
+            // Model B
+            const bd = +bDrivers.value;
+            const bs = +bSub.value;
+            const bp = +bPct.value / 100;
+            const bf = +bFare.value;
+            const brides = +bRides.value;
+
+            const gmr = bd * brides * bf;
+            const bRevenueVal = (bd * bs) + (gmr * bp);
+            const bProfitVal = bRevenueVal - totalCost;
+
+            bDriversVal.textContent = bd;
+            bSubVal.textContent = `$${bs}`;
+            bPctVal.textContent = `${Math.round(bp * 100)}%`;
+            bFareVal.textContent = `$${bf}`;
+            bRidesVal.textContent = brides;
+
+            bRevenue.textContent = money(bRevenueVal);
+            bProfit.textContent = money(bProfitVal);
+            setProfitClass(bProfit, bProfitVal);
+
+            // Shared cost
+            opsVal.textContent = `$${money(ops)}`;
+            infraVal.textContent = `$${money(infra)}`;
+
+            const totalCostEl = document.getElementById("totalCost");
+            totalCostEl.textContent = money(totalCost);
+        }
+
+        function resetModelA() {
+            aDrivers.value = defaults.aDrivers;
+            aSub.value = defaults.aSub;
+            aRideFee.value = defaults.aRideFee;
+            aRides.value = defaults.aRides;
+            calc();
+        }
+
+        function resetModelB() {
+            bDrivers.value = defaults.bDrivers;
+            bSub.value = defaults.bSub;
+            bPct.value = defaults.bPct;
+            bFare.value = defaults.bFare;
+            bRides.value = defaults.bRides;
+            calc();
+        }
+
+        function resetCosts() {
+            ops.value = defaults.ops;
+            infra.value = defaults.infra;
+            calc();
+        }
+
+        // Wire up listeners
+        document.querySelectorAll("input").forEach(i => i.addEventListener("input", calc));
+
+        // Reset buttons (if present)
+        const btnA = document.getElementById("resetA");
+        if (btnA) btnA.addEventListener("click", resetModelA);
+
+        const btnB = document.getElementById("resetB");
+        if (btnB) btnB.addEventListener("click", resetModelB);
+
+        const btnC = document.getElementById("resetCosts");
+        if (btnC) btnC.addEventListener("click", resetCosts);
+
+        // Initial render
+        calc();
+    </script>
+
+</body>
+
+</html>
